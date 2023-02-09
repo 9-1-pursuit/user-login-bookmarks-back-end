@@ -4,7 +4,7 @@
 
 ## FRONTEND CODE
 
-[Frontend Starter]('https://github.com/9-1-pursuit/user-login-bookmarks-front-end')
+[Frontend Starter](https://github.com/9-1-pursuit/user-login-bookmarks-front-end)
 
 ## VIDEOS
 
