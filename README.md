@@ -1,8 +1,8 @@
-# Login Bookmarks Backend Starter
+# Login Bookmarks Back-end Starter
 
 ## This is where the work will be done for the videos
 
-## FRONTEND CODE
+## FRONT-END CODE
 
 [Frontend Starter](https://github.com/9-1-pursuit/user-login-bookmarks-front-end)
 
