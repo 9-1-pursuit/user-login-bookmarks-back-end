@@ -14,12 +14,11 @@ const {
   validateURL
 } = require('../validations/checkBookmarks.js');
 
-const reviewsController = require('./reviewsController.js');
-bookmarks.use('/:bookmarkId/reviews', reviewsController);
-
 // INDEX
 bookmarks.get('/', async (req, res) => {
+  console.log('hello all');
   const allBookmarks = await getAllBookmarks();
+  console.log(allBookmarks);
   if (allBookmarks[0]) {
     res.status(200).json(allBookmarks);
   } else {
@@ -39,7 +38,7 @@ bookmarks.get('/:id', async (req, res) => {
 
 // CREATE
 bookmarks.post('/', checkBoolean, checkName, validateURL, async (req, res) => {
-  console.log('hello route', req.body);
+  console.log('hello route', req.bodys);
   try {
     const bookmark = await createBookmark(req.body);
 
