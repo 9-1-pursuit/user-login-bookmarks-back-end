@@ -1,13 +1,13 @@
 {
-  "name": "back-end",
+  "name": "parker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "db_seed": "psql -U postgres -f db/seed.sql",
-    "db_init": "psql -U postgres -f db/schema.sql"
+    "dbseed": "psql -U postgres -f db/seed.sql",
+    "dbinit": "psql -U postgres -f db/schema.sql"
   },
   "author": "",
   "license": "ISC",
