@@ -5,7 +5,6 @@ const getAllBookmarks = async () => {
     const allBookmarks = await db.any("SELECT * FROM bookmarks");
     return allBookmarks;
   } catch (error) {
-    console.log("getAllBookmarks error", error);
     return error;
   }
 };
