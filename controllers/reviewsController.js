@@ -1,6 +1,5 @@
 const express = require("express");
 
-const { getBookmark } = require("../queries/bookmarks.js");
 const reviews = express.Router({ mergeParams: true });
 const {
   getAllReviews,
