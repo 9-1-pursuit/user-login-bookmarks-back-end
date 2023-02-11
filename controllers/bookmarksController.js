@@ -1,24 +1,22 @@
-const express = require('express');
+const express = require("express");
 const bookmarks = express.Router();
 const {
   getAllBookmarks,
   getBookmark,
   createBookmark,
   deleteBookmark,
-  updateBookmark
-} = require('../queries/bookmarks');
+  updateBookmark,
+} = require("../queries/bookmarks");
 
 const {
   checkBoolean,
   checkName,
-  validateURL
-} = require('../validations/checkBookmarks.js');
+  validateURL,
+} = require("../validations/checkBookmarks.js");
 
 // INDEX
-bookmarks.get('/', async (req, res) => {
-  console.log('hello all');
+bookmarks.get("/", async (req, res) => {
   const allBookmarks = await getAllBookmarks();
-  console.log(allBookmarks);
   if (allBookmarks[0]) {
     res.status(200).json(allBookmarks);
   } else {
@@ -26,19 +24,18 @@ bookmarks.get('/', async (req, res) => {
   }
 });
 // SHOW
-bookmarks.get('/:id', async (req, res) => {
+bookmarks.get("/:id", async (req, res) => {
   const { id } = req.params;
   const bookmark = await getBookmark(id);
   if (bookmark) {
     res.json(bookmark);
   } else {
-    res.status(404).json({ error: 'not found' });
+    res.status(404).json({ error: "not found" });
   }
 });
 
 // CREATE
-bookmarks.post('/', checkBoolean, checkName, validateURL, async (req, res) => {
-  console.log('hello route', req.bodys);
+bookmarks.post("/", checkBoolean, checkName, validateURL, async (req, res) => {
   try {
     const bookmark = await createBookmark(req.body);
 
@@ -50,7 +47,7 @@ bookmarks.post('/', checkBoolean, checkName, validateURL, async (req, res) => {
 
 // UPDATE
 bookmarks.put(
-  '/:id',
+  "/:id",
   checkBoolean,
   checkName,
   validateURL,
@@ -62,13 +59,13 @@ bookmarks.put(
 );
 
 // DELETE
-bookmarks.delete('/:id', async (req, res) => {
+bookmarks.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const deletedBookmark = await deleteBookmark(id);
   if (deletedBookmark.id) {
     res.status(200).json(deletedBookmark);
   } else {
-    res.status(404).json('Bookmark not found');
+    res.status(404).json("Bookmark not found");
   }
 });
 

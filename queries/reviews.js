@@ -1,7 +1,6 @@
 const db = require("../db/dbConfig.js");
 
 const getAllReviews = async (bookmark_id) => {
-  console.log("model review", bookmark_id);
   try {
     const allReviews = await db.any(
       "SELECT * FROM reviews WHERE bookmark_id=$1",
