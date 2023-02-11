@@ -16,16 +16,14 @@ reviews.get("/", async (req, res) => {
   if (allReviews[0]) {
     res.status(200).json(allReviews);
   } else {
-    res.status(400).json({ message: "no reviews" });
+    res.status(404).json({ message: "no reviews" });
   }
 });
 
 // SHOW
 reviews.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("get reviews", id);
   const review = await getReview(id);
-  console.log("reviews", review);
   if (review) {
     res.json(review);
   } else {
@@ -35,9 +33,7 @@ reviews.get("/:id", async (req, res) => {
 
 reviews.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("get reviews", id);
   const review = await getReview(id);
-  console.log("reviews", review);
   if (review) {
     res.json(review);
   } else {
