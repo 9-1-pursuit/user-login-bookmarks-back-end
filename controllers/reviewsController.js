@@ -1,6 +1,5 @@
 const express = require("express");
 
-const { getBookmark } = require("../queries/bookmarks.js");
 const reviews = express.Router({ mergeParams: true });
 const {
   getAllReviews,
@@ -13,21 +12,18 @@ const {
 // INDEX
 reviews.get("/", async (req, res) => {
   const { bookmarkId } = req.params;
-  console.log("reviews", bookmarkId);
   const allReviews = await getAllReviews(bookmarkId);
   if (allReviews[0]) {
     res.status(200).json(allReviews);
   } else {
-    res.status(200).json({ message: "no reviews" });
+    res.status(404).json({ message: "no reviews" });
   }
 });
 
 // SHOW
 reviews.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("get reviews", id);
   const review = await getReview(id);
-  console.log("reviews", review);
   if (review) {
     res.json(review);
   } else {
@@ -37,9 +33,7 @@ reviews.get("/:id", async (req, res) => {
 
 reviews.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("get reviews", id);
   const review = await getReview(id);
-  console.log("reviews", review);
   if (review) {
     res.json(review);
   } else {
@@ -59,7 +53,6 @@ reviews.put("/:id", async (req, res) => {
 });
 
 reviews.post("/", async (req, res) => {
-  console.log("hello bookmark", req.body);
   const review = await newReview(req.body);
   res.status(200).json(review);
 });
