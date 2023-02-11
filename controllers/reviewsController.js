@@ -13,12 +13,11 @@ const {
 // INDEX
 reviews.get("/", async (req, res) => {
   const { bookmarkId } = req.params;
-  console.log("reviews", bookmarkId);
   const allReviews = await getAllReviews(bookmarkId);
   if (allReviews[0]) {
     res.status(200).json(allReviews);
   } else {
-    res.status(200).json({ message: "no reviews" });
+    res.status(400).json({ message: "no reviews" });
   }
 });
 
