@@ -40,6 +40,5 @@ CREATE TABLE reviews (
     rating NUMERIC,
     CHECK (rating >= 0 AND rating <= 5),
     bookmark_id INTEGER references bookmarks (id),
-    user_id INTEGER references users (id)
     ON DELETE CASCADE
 );
